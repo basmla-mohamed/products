@@ -1,59 +1,173 @@
-# MyAppModule
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 22.2.3.
+<div align="center">
+  <img src="./images/hero.svg" width="100%" alt="Products">
+</div>
 
-## Development server
+<br>
 
-To start a local development server, run:
+<div align="center">
+  <img src="https://img.shields.io/badge/Angular-DD0031?style=flat-square&logo=angular&logoColor=white">
+  <img src="https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white">
+  <img src="https://img.shields.io/badge/SCSS-CF649A?style=flat-square&logo=sass&logoColor=white">
+  <img src="https://img.shields.io/badge/Bootstrap-7952B3?style=flat-square&logo=bootstrap&logoColor=white">
+</div>
+
+<br>
+
+<div align="center">
+  A responsive product catalog with an interactive shopping cart, built with Angular.
+</div>
+
+<br>
+
+<img src="./images/overview.svg" width="100%">
+
+## Overview
+
+Products is an Angular shopping cart application that displays electronic products and allows users to manage their cart through a simple interface.
+
+The application keeps product quantities, total item count, and total price synchronized through Angular's reactive state features.
+
+---
+
+<img src="./images/features.svg" width="100%">
+
+## Features
+
+| Feature | Description |
+|---|---|
+| Product Catalog | Displays eight electronic products with images, descriptions, and prices. |
+| Add to Cart | Increases the selected product quantity. |
+| Remove from Cart | Resets the selected product quantity to zero. |
+| Total Items | Calculates the combined quantity of all products. |
+| Total Price | Calculates the cart total using each product's current price. |
+| Reactive Interface | Updates displayed values when the products state changes. |
+| Responsive Layout | Uses the Bootstrap grid to adapt to different screen sizes. |
+
+---
+
+<img src="./images/technology.svg" width="100%">
+
+## Technology Stack
+
+| Technology | Usage |
+|---|---|
+| Angular | Application framework and component architecture |
+| TypeScript | Product model and application logic |
+| Angular Signals | Reactive product state |
+| Computed Signals | Derived cart totals |
+| HTML | Component templates |
+| SCSS | Styling and layout |
+| Bootstrap | Grid system and responsive utilities |
+
+---
+
+<img src="./images/angular-concepts.svg" width="100%">
+
+## Angular Concepts
+
+- **signal()** — stores the products array as reactive state.
+- **computed()** — derives the total item count and total price.
+- **update()** — changes the products state immutably.
+- **map()** — updates the product matching a given ID.
+- **reduce()** — calculates the cart summaries.
+- **@for** — renders the product collection.
+- **@if** — conditionally displays the Remove from Cart button.
+- **Event Binding** — connects button clicks to component methods.
+- **Interpolation** — displays product data and calculated values.
+
+---
+
+<img src="./images/project-structure.svg" width="100%">
+
+## Project Structure
+
+```text
+my-app-module/
+├── public/
+├── src/
+│   ├── app/
+│   │   ├── components/
+│   │   │   ├── home/
+│   │   │   ├── navbar/
+│   │   │   └── products/
+│   │   │       ├── products.component.ts
+│   │   │       ├── products.component.html
+│   │   │       └── products.component.scss
+│   │   ├── app.html
+│   │   ├── app.scss
+│   │   └── app.ts
+│   ├── index.html
+│   ├── main.ts
+│   └── styles.scss
+├── angular.json
+├── package.json
+└── README.md
+```
+
+---
+
+<img src="./images/installation.svg" width="100%">
+
+## Installation
+
+### 1. Clone the repository
+
+```bash
+git clone YOUR_REPOSITORY_URL
+```
+
+### 2. Navigate to the project directory
+
+```bash
+cd my-app-module
+```
+
+### 3. Install dependencies
+
+```bash
+npm install
+```
+
+### 4. Start the development server
 
 ```bash
 ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+### 5. Open the application
 
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
+```text
+http://localhost:4200
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+---
 
-```bash
-ng generate --help
+## Cart Calculation
+
+### Total Items
+
+```typescript
+totalItems = computed(() =>
+  this.products().reduce((total, item) => total + item.quantity, 0)
+);
 ```
 
-## Building
+### Total Price
 
-To build the project run:
-
-```bash
-ng build
+```typescript
+totalPrice = computed(() =>
+  this.products().reduce(
+    (total, item) => total + item.quantity * item.newPrice,
+    0
+  )
+);
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+Both computed values recalculate automatically when the products signal changes.
 
-## Running unit tests
+<br>
 
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+<div align="center">
+  <img src="./images/footer.svg" width="100%">
+</div>
